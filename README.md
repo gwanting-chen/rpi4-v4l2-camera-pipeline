@@ -21,7 +21,7 @@ This project was built iteratively to ensure stability and understand the lowest
 1. **`main.c` (Stage 1)**: Basic V4L2 raw capture using standard memory mapping (MMAP).
 2. **`main_isp.c` (Stage 2)**: Integrated Broadcom ISP (`/dev/video13`, `/dev/video14`) for format conversion (Bayer to RGB).
 3. **`main_isp_dma.c` (Stage 3)**: Implemented Zero-Copy DMA-BUF to eliminate CPU memory copying between the Sensor node and ISP node.
-4. **`main_multi.cpp` (Final Stage)**: Completely refactored into a Modern C++ (C++14) Object-Oriented architecture, introducing multi-threading, Ring Buffers, and the custom 3A closed-loop control system.
+4. **`main_isp_dma_multi.cpp` (Final Stage)**: Completely refactored into a Modern C++ (C++14) Object-Oriented architecture, introducing multi-threading, Ring Buffers, and the custom 3A closed-loop control system.
 
 ## ⚙️ Software Architecture
 
