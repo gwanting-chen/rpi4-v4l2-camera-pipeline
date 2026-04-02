@@ -14,6 +14,15 @@ This project implements a high-performance, multi-threaded camera pipeline on Ra
   * Parsed Broadcom's raw `bcm2835_isp_stats` struct directly from kernel headers.
   * Implemented a dual-stage PID controller for Auto Exposure (adjusting Exposure Time first, then Analog Gain) and Manual/Auto White Balance based on the Gray World Assumption.
 
+## 🛤️ Project Evolution (專案演進史)
+
+This project was built iteratively to ensure stability and understand the lowest-level bottlenecks. The repository contains the entire evolution of the architecture:
+
+1. **`main.c` (Stage 1)**: Basic V4L2 raw capture using standard memory mapping (MMAP).
+2. **`main_isp.c` (Stage 2)**: Integrated Broadcom ISP (`/dev/video13`, `/dev/video14`) for format conversion (Bayer to RGB).
+3. **`main_isp_dma.c` (Stage 3)**: Implemented Zero-Copy DMA-BUF to eliminate CPU memory copying between the Sensor node and ISP node.
+4. **`main_multi.cpp` (Final Stage)**: Completely refactored into a Modern C++ (C++14) Object-Oriented architecture, introducing multi-threading, Ring Buffers, and the custom 3A closed-loop control system.
+
 ## ⚙️ Software Architecture
 
 1. **Main Thread (Producer)**: High-speed V4L2 DQBUF/QBUF loop handling DMA passing.
